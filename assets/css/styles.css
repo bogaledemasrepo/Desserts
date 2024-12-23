@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "RedHatText";
+  src: url("../fonts/RedHatText-Italic-VariableFont_wght.ttf"),
+    url("../fonts/static/RedHatText-Regular.ttf"),
+    url("../fonts/static/RedHatText-SemiBold.ttf"),
+    url("../fonts/static/RedHatText-Bold.ttf"),
+    url("../fonts/RedHatText-Italic-VariableFont_wght.ttf");
+}
+:root {
+  --RedColor: hsl(14, 86%, 42%);
+  --GreenColor: hsl(159, 69%, 38%);
+  --Rose-50: hsl(20, 50%, 98%);
+  --Rose-100: hsl(13, 31%, 94%);
+  --Rose-300: hsl(14, 25%, 72%);
+  --Rose-400: hsl(7, 20%, 60%);
+  --Rose-500: hsl(12, 20%, 44%);
+  --Rose-900: hsl(14, 65%, 9%);
+}
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "RedHatText", sans-serif;
+  color: #777;
+  padding: 0 5rem;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1;
+}
+
+.container {
+  width: 80vw;
+  display: grid;
+  gap: 2rem;
+}
+@media screen and (min-width: 640px) {
+  .content {
+    grid-template-columns: auto 300px;
+  }
+}
+@media screen and (min-width: 820px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.item {
+  width: 100%;
+  height: fit-content;
+}
+.cart {
+  width: 100%;
+  height: 300px;
+  border-radius: 4px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid gray;
+  font-family: sans-serif;
+  font-size: 10px;
+  margin: 60px auto;
+}
+.cart h1 {
+  color: #c03f17;
+  margin: 1rem 0;
+}
+.cartItem {
+  width: 100%;
+  height: 60px;
+  background: #afafaf;
+  margin: 1rem 0;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
