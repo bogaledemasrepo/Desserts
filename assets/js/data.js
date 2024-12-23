@@ -1,4 +1,4 @@
-let data = [
+export const data = [
   {
     image: {
       thumbnail: "./assets/images/image-waffle-thumbnail.jpg",
@@ -99,9 +99,5 @@ let data = [
     price: 6.5,
   },
 ];
-data.forEach(({ image, name, catagory, price }) => {
-  let container = document.createElement("div");
-  container.classList.add("item");
-  container.innerHTML = `<img src="${image.mobile}" />`;
-  document.querySelector(".produactlist").appendChild(container);
-});
+
+export const dataTypes = typeof data;
