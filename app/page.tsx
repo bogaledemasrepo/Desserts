@@ -1,12 +1,13 @@
-import { data } from "./../assets/js/data";
+import { data } from "@/data/data";
 import Item from "../components/Item";
+import Cart from "@/components/Cart";
 
 export default function Home() {
   return (
     <div className="w-[80vw] mx-auto">
       <h1 className="text-3xl">Dessers</h1>
-      <div className="flex flex-col min-[670px]:flex-row gap-4">
-        <div className="flex-1 flex-grow grid w-full grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 overflow-y-scroll">
+      <div className="flex flex-col min-[670px]:flex-row gap-8">
+        <div className="flex-1 flex-grow grid w-full grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 overflow-y-scroll">
           {data.map((item) => (
             <Item
               key={item.name}
@@ -17,9 +18,7 @@ export default function Home() {
             />
           ))}
         </div>
-        <div className="w-[300px] h-[400px] bg-slate-300 border border-slate-500 rounded-md">
-          <h1>Your Cart(0)</h1>
-        </div>
+        <Cart />
       </div>
     </div>
   );

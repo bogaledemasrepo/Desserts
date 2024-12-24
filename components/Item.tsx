@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import ImageUrl from "../assets/images/image-baklava-tablet.jpg";
+import AddSvg from "@/assets/images/icon-add-to-cart.svg";
 
 const Item = ({
   image,
@@ -17,7 +18,8 @@ const Item = ({
     <div className="">
       <div className="relative rounded-lg ">
         <Image className="block w-full" src={ImageUrl} alt={image} />
-        <button className="absolute px-4 py-3 bg-slate-200 border border-slate-300 rounded-full -bottom-6 left-[50%] translate-x-[-50%]">
+        <button className="absolute px-8 py-3 bg-slate-200 border border-slate-300 -bottom-6 left-[50%] translate-x-[-50%] flex gap-4 w-fit text-nowrap rounded-full">
+          <AddSvg />
           Add to cart
         </button>
       </div>

@@ -99,5 +99,3 @@ export const data = [
     price: 6.5,
   },
 ];
-
-export const dataTypes = typeof data;
