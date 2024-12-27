@@ -1,5 +1,5 @@
 "use client";
-import { removeFromCart } from "@/api/actions/removeFromCart";
+import { removeFromCart } from "@/app/api/actions/removeFromCart";
 import RemoveSvg from "@/public/assets/images/icon-remove-item.svg";
 const RemoveFromCart = ({
   userId,

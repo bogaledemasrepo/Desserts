@@ -1,7 +1,7 @@
 "use server";
 import Image from "next/image";
 import AddToCart from "./AddToCart";
-import { isInCart } from "@/api/actions/isInCart";
+import { isInCart } from "@/app/api/actions/isInCart";
 import MaxiButton from "./MaxiButton";
 import MiniButton from "./MiniButton";
 
@@ -21,8 +21,12 @@ const Item = async ({
   const isInCartChecker = await isInCart(userId, name);
 
   return (
-    <div className="">
-      <div className="relative rounded-lg ">
+    <div className={""}>
+      <div
+        className={`relative rounded-lg ${
+          isInCartChecker !== 0 ? " border-2 border-myred" : ""
+        }`}
+      >
         <Image
           height={500}
           width={500}

@@ -1,27 +1,19 @@
-import { getAllData } from "@/api/actions/getAllData";
-import Item from "../components/Item";
-import Cart from "@/components/Cart";
+import SignIn from "@/components/SignIn";
+import SignOut from "@/components/SignOut";
+import React from "react";
 
-export default async function Home() {
-  const data = await getAllData();
+const page = () => {
   return (
-    <div className="w-[85vw] mx-auto">
-      <h1 className="text-4xl font-bold py-4">Dessers</h1>
-      <div className="flex flex-col min-[670px]:flex-row gap-16">
-        <div className="flex-1 flex-grow grid w-full grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 overflow-y-scroll">
-          {data.map((item) => (
-            <Item
-              key={item.name}
-              userId="user1"
-              imageSrc={item.image.desktop}
-              name={item.name}
-              catagory={item.category}
-              price={item.price}
-            />
-          ))}
-        </div>
-        <Cart userId={"user1"} />
+    <div className="w-full min-h-screen flex items-center justify-center flex-col">
+      <h1 className="text-4xl text-myred font-bold py-4">
+        Wellcome to deserts applications
+      </h1>
+      <div className="flex space-x-4 p-8 rounded-sm border border-slate-300">
+        <SignIn />
+        <SignOut />
       </div>
     </div>
   );
-}
+};
+
+export default page;

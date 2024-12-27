@@ -1,5 +1,5 @@
 "use client";
-import { increaseAmount } from "@/api/actions/increseAmount";
+import { increaseAmount } from "@/app/api/actions/increseAmount";
 import IncrementSvg from "@/public/assets/images/icon-increment-quantity.svg";
 import React from "react";
 
