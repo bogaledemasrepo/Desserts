@@ -8,8 +8,8 @@ export default function SignOut() {
         await signOut();
       }}
     >
-      <button className="px-8 py-3 bg-slate-200 rounded-full border border-slate-400">
-        Sign Out using Github
+      <button className="absolute bottom-0 px-3 py-1 bg-slate-200 rounded-md border border-slate-400 hover:bg-slate-300 hover:border-slate-200 transition-all">
+        Logout
       </button>
     </form>
   );

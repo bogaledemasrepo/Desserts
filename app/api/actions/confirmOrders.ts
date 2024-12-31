@@ -2,8 +2,9 @@
 
 import { readFileSync } from "fs";
 import { UserOrderType } from "./types";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 import { writeToOrder } from "./writeToOrder";
+import { writeToConfirmed } from "./writeToConfirmed";
 
 export const confirmOrders = async (userId: string) => {
   const order: UserOrderType[] = JSON.parse(
@@ -17,6 +18,7 @@ export const confirmOrders = async (userId: string) => {
   if (pendingUsersOrder) {
     pendingUsersOrder.orderStatus = "Confirmed";
     writeToOrder(order);
-    revalidatePath("/");
+    writeToConfirmed(order);
+    // revalidatePath("/");
   } else console.log(pendingUsersOrder, "No pending order");
 };
