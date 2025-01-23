@@ -1,5 +1,5 @@
 "use client";
-import { addToCart } from "@/api/actions/addToCart";
+import { addToCart } from "@/app/api/addToCart";
 import AddSvg from "@/public/assets/images/icon-add-to-cart.svg";
 import React from "react";
 

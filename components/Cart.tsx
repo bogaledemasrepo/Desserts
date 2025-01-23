@@ -2,7 +2,7 @@ import CarbonSvg from "@/public/assets/images/icon-carbon-neutral.svg";
 import EmptySvg from "@/public/assets/images/illustration-empty-cart.svg";
 import CartItem from "./CartItem";
 import Cartwrapper from "./Cartwrapper";
-import { getMyOrders } from "@/api/actions/getMyOrder";
+import { getMyOrders } from "@/app/api/getMyOrder";
 import ConfirmButton from "./ConfirmButton";
 
 const Cart = async ({ userId }: { userId: string }) => {

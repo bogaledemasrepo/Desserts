@@ -1,4 +1,4 @@
-import { getAllData } from "@/api/actions/getAllData";
+import { getAllData } from "@/app/api/getAllData";
 import Item from "../components/Item";
 import Cart from "@/components/Cart";
 

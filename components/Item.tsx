@@ -1,7 +1,7 @@
 "use server";
 import Image from "next/image";
 import AddToCart from "./AddToCart";
-import { isInCart } from "@/api/actions/isInCart";
+import { isInCart } from "@/app/api/isInCart";
 import MaxiButton from "./MaxiButton";
 import MiniButton from "./MiniButton";
 

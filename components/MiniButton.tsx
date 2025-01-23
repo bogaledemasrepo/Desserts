@@ -1,5 +1,5 @@
 "use client";
-import { decreaseAmount } from "@/api/actions/decreaseAmount";
+import { decreaseAmount } from "@/app/api/decreaseAmount";
 import DecrementSvg from "@/public/assets/images/icon-decrement-quantity.svg";
 import React from "react";
 
