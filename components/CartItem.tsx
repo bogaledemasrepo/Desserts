@@ -1,20 +1,18 @@
 import RemoveFromCart from "./RemoveFromCart";
 
 const CartItem = ({
-  userId,
-  title,
+  name,
   price,
   quantity,
 }: {
-  userId: string;
-  title: string;
+  name: string;
   price: number;
   quantity: number;
 }) => {
   return (
     <div className="w-full flex items-center justify-between my-4">
       <div className="">
-        <h2 className="text-sm font-bold">{title}</h2>
+        <h2 className="text-sm font-bold">{name}</h2>
         <p className="space-x-2 leading-8 text-sm font-semibold">
           <span className="text-myred">{quantity}x</span>
           <span className="text-slate-400">@{price.toFixed(2)}</span>
@@ -23,7 +21,7 @@ const CartItem = ({
           </span>
         </p>
       </div>
-      <RemoveFromCart userId={userId} produactName={title} />
+      <RemoveFromCart name={name} />
     </div>
   );
 };

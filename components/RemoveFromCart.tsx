@@ -1,25 +1,16 @@
 "use client";
-import { removeFromCart } from "@/app/api/removeFromCart";
+import { ApiContext } from "@/hooks/apiContext";
 import RemoveSvg from "@/public/assets/images/icon-remove-item.svg";
-const RemoveFromCart = ({
-  userId,
-  produactName,
-}: {
-  userId: string;
-  produactName: string;
-}) => {
-  const removeHandler = async () => {
-    removeFromCart(userId, produactName);
-  };
+import { useContext } from "react";
+const RemoveFromCart = ({ name }: { name: string }) => {
+  const { removeItem } = useContext(ApiContext);
   return (
-    <form action={removeHandler}>
-      <button
-        type="submit"
-        className="p-1 rounded-full border-2 border-slate-400 flex items-center justify-center hover:border-slate-600 text-slate-600 cursor-pointer transition-colors"
-      >
-        <RemoveSvg />
-      </button>
-    </form>
+    <button
+      className="p-1 rounded-full border-2 border-slate-400 flex items-center justify-center hover:border-slate-600 text-slate-600 cursor-pointer transition-colors"
+      onClick={() => removeItem(name)}
+    >
+      <RemoveSvg />
+    </button>
   );
 };
 

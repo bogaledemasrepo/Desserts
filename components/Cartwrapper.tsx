@@ -1,16 +1,13 @@
-import React, { ReactNode } from "react";
+import { ApiContext } from "@/hooks/apiContext";
+import { ReactNode, useContext } from "react";
 
-const Cartwrapper = ({
-  pendingOrderCount,
-  children,
-}: {
-  pendingOrderCount: number;
-  children: ReactNode;
-}) => {
+const Cartwrapper = ({ children }: { children: ReactNode }) => {
+  const { myCart } = useContext(ApiContext);
+
   return (
     <div className="w-[300px] h-fit py-8 px-2 rounded-md flex flex-col">
       <h2 className="text-2xl text-myred font-bold">
-        Your Cart({pendingOrderCount})
+        Your Cart({myCart.length})
       </h2>
       {children}
     </div>

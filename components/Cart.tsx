@@ -1,23 +1,23 @@
-import CarbonSvg from "@/public/assets/images/icon-carbon-neutral.svg";
+"use client";
+import { useContext } from "react";
+import Cartwrapper from "./Cartwrapper";
 import EmptySvg from "@/public/assets/images/illustration-empty-cart.svg";
 import CartItem from "./CartItem";
-import Cartwrapper from "./Cartwrapper";
-import { getMyOrders } from "@/app/api/getMyOrder";
+import CarbonSvg from "@/public/assets/images/icon-carbon-neutral.svg";
 import ConfirmButton from "./ConfirmButton";
+import { ApiContext } from "@/hooks/apiContext";
+import data from "@/data";
 
-const Cart = async ({ userId }: { userId: string }) => {
-  const PendingOrders = await getMyOrders(userId);
-  function totalPrice() {
-    let priceCalculate = 0;
-    PendingOrders[0].Cart.forEach(
-      (Item) => (priceCalculate = priceCalculate + Item.price * Item.quantity)
-    );
-    return priceCalculate;
-  }
-  if (PendingOrders.length === 0 || PendingOrders[0].Cart.length === 0) {
+const Cart = () => {
+  const { myCart, getPrice } = useContext(ApiContext);
+  let totalPrice = 0;
+  myCart.forEach((Item) => {
+    totalPrice = totalPrice + getPrice(Item.name, Item.quantity);
+  });
+  if (myCart.length === 0) {
     // Display No order message
     return (
-      <Cartwrapper pendingOrderCount={0}>
+      <Cartwrapper>
         <div className="flex flex-col items-center">
           <div className="w-full h-[200px] flex items-center justify-center">
             <EmptySvg />
@@ -28,20 +28,24 @@ const Cart = async ({ userId }: { userId: string }) => {
     );
   } else
     return (
-      <Cartwrapper pendingOrderCount={PendingOrders[0].Cart.length}>
+      <Cartwrapper>
         <div>
-          {PendingOrders[0].Cart.map((Item) => (
-            <CartItem
-              userId={userId}
-              key={Item.name}
-              title={Item.name}
-              price={Item.price}
-              quantity={Item.quantity}
-            />
-          ))}
+          {myCart.map(({ name, quantity }) => {
+            const Item = data.find((Item) => Item.name === name);
+            if (Item) {
+              return (
+                <CartItem
+                  key={Item.name}
+                  name={Item.name}
+                  price={Item.price}
+                  quantity={quantity}
+                />
+              );
+            } else return;
+          })}
           <div className="w-full flex justify-between my-2">
             <p className="text-slate-500">Total Order</p>
-            <p className="text-xl font-bold">${totalPrice().toFixed(2)}</p>
+            <p className="text-xl font-bold">${totalPrice.toFixed(2)}</p>
           </div>
           <div className="flex space-x-4 my-6">
             <CarbonSvg />{" "}
@@ -53,10 +57,13 @@ const Cart = async ({ userId }: { userId: string }) => {
               delivery
             </p>
           </div>
-          <ConfirmButton userId={userId} />
+          <ConfirmButton confirmOrder={() => {}} />
         </div>
       </Cartwrapper>
     );
 };
 
 export default Cart;
+/*
+
+*/

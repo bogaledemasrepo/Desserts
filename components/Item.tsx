@@ -1,25 +1,25 @@
-"use server";
+"use client";
+
 import Image from "next/image";
 import AddToCart from "./AddToCart";
-import { isInCart } from "@/app/api/isInCart";
-import MaxiButton from "./MaxiButton";
 import MiniButton from "./MiniButton";
+import MaxiButton from "./MaxiButton";
+import { useContext } from "react";
+import { ApiContext } from "@/hooks/apiContext";
 
-const Item = async ({
-  userId,
-  imageSrc,
+const Item = ({
   name,
   catagory,
   price,
+  image,
 }: {
-  userId: string;
-  imageSrc: string;
   name: string;
   catagory: string;
   price: number;
+  image: string;
 }) => {
-  const isInCartChecker = await isInCart(userId, name);
-
+  const { isInCartChecker, addItem, maximaiseQuantity, minimaiseQuantity } =
+    useContext(ApiContext);
   return (
     <div className="">
       <div className="relative rounded-lg ">
@@ -27,16 +27,22 @@ const Item = async ({
           height={500}
           width={500}
           className="block w-full rounded-lg"
-          src={imageSrc}
-          alt={imageSrc}
+          src={image}
+          alt={image}
         />
-        {isInCartChecker === 0 ? (
-          <AddToCart produactName={name} userId={userId} />
+        {isInCartChecker(name) === 0 ? (
+          <AddToCart
+            addItemHandler={() => {
+              addItem(name);
+            }}
+          />
         ) : (
           <div className="absolute px-8 py-3  -bottom-6 left-[50%] translate-x-[-50%] flex gap-8 items-center justify-center w-fit text-nowrap rounded-full bg-myred transition-colors">
-            <MiniButton userId={userId} name={name} />
-            <span className="text-white font-semibold">{isInCartChecker}</span>
-            <MaxiButton userId={userId} name={name} />
+            <MiniButton clickHandler={() => minimaiseQuantity(name)} />
+            <span className="text-white font-semibold">
+              {isInCartChecker(name)}
+            </span>
+            <MaxiButton clickHandler={() => maximaiseQuantity(name)} />
           </div>
         )}
       </div>

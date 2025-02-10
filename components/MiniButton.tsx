@@ -1,21 +1,15 @@
 "use client";
-import { decreaseAmount } from "@/app/api/decreaseAmount";
-import DecrementSvg from "@/public/assets/images/icon-decrement-quantity.svg";
+import DecrementSvg from "@/public/assets/images/icon-increment-quantity.svg";
 import React from "react";
 
-const MiniButton = ({ userId, name }: { userId: string; name: string }) => {
-  const minimizeHandler = async () => {
-    await decreaseAmount(userId, name);
-  };
+const MiniButton = ({ clickHandler }: { clickHandler: () => void }) => {
   return (
-    <form action={minimizeHandler}>
-      <button
-        className="w-4 h-4 rounded-full  ring-1 ring-offset-1 ring-slate-100 flex items-center justify-center"
-        type="submit"
-      >
-        <DecrementSvg />
-      </button>
-    </form>
+    <button
+      className="w-4 h-4 rounded-full  ring-1 ring-offset-1 ring-slate-100 flex items-center justify-center"
+      onClick={clickHandler}
+    >
+      <DecrementSvg />
+    </button>
   );
 };
 
