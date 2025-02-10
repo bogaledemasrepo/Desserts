@@ -1,5 +1,5 @@
 "use client";
-import DecrementSvg from "@/public/assets/images/icon-increment-quantity.svg";
+import DecrementSvg from "@/public/assets/images/icon-decrement-quantity.svg";
 import React from "react";
 
 const MiniButton = ({ clickHandler }: { clickHandler: () => void }) => {
