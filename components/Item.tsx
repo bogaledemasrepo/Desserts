@@ -37,9 +37,9 @@ const Item = ({
             }}
           />
         ) : (
-          <div className="absolute px-8 py-3  -bottom-6 left-[50%] translate-x-[-50%] flex gap-8 items-center justify-center w-fit text-nowrap rounded-full bg-myred transition-colors">
+          <div className="absolute px-8 py-3  w-fit -bottom-6 left-[50%] translate-x-[-50%] flex gap-8 items-center justify-center text-nowrap rounded-full bg-myred transition-colors">
             <MiniButton clickHandler={() => minimaiseQuantity(name)} />
-            <span className="text-white font-semibold">
+            <span className="flex-1 text-white font-semibold text-nowrap">
               {isInCartChecker(name)}
             </span>
             <MaxiButton clickHandler={() => maximaiseQuantity(name)} />
