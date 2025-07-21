@@ -9,7 +9,7 @@ function Header() {
   const [signoutbtnvissible, setSignoutbtnvissible] = useState(false);
   return (
     <header className="fixed top-0 w-[85vw] mx-auto z-50 h-[80px] shadow-sm bg-myred mb-4 px-4 flex items-center justify-between">
-      <h1 className="text-4xl font-bold py-4">Dessers</h1>
+      <h1 className="text-4xl font-bold py-4">Desserts</h1>
       {isSignedIn && user?.imageUrl ? (
         <Image
           onClick={() => setSignoutbtnvissible(!signoutbtnvissible)}
