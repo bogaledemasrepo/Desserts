@@ -1,5 +1,4 @@
 "use client";
-import Item from "@/components/Item";
 import data from "@/data";
 import { createContext, ReactNode, useState } from "react";
 
@@ -7,7 +6,7 @@ export const ApiContext = createContext({
   myCart: [{ name: "", quantity: 1 }],
   getPrice: (val: string, quantity: number): number => 1,
   addItem: (name: string): void => {},
-  removeItem: (name: string): void => {},
+  removeItem: (name?: string): void => {},
   minimaiseQuantity: (name: string): void => {},
   maximaiseQuantity: (name: string): void => {},
   isInCartChecker: (val: string): number => 1,
@@ -24,7 +23,10 @@ const ApiContextProvider = ({ children }: { children: ReactNode }) => {
       });
     }
   };
-  const removeItem = (name: string) => {
+  const removeItem = (name?: string) => {
+    if (!name) {
+      setCartData([]);
+    }
     setCartData((prevState) => {
       return [...prevState.filter((Item) => Item.name !== name)];
     });

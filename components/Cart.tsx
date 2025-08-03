@@ -57,7 +57,7 @@ const Cart = () => {
               delivery
             </p>
           </div>
-          <ConfirmButton confirmOrder={() => {}} />
+          <ConfirmButton />
         </div>
       </Cartwrapper>
     );
