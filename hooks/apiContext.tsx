@@ -3,6 +3,8 @@ import data from "@/data";
 import { createContext, ReactNode, useState } from "react";
 
 export const ApiContext = createContext({
+  paymentStatus: "",
+  setPaymentStatus: (value: string): void => {},
   myCart: [{ name: "", quantity: 1 }],
   getPrice: (val: string, quantity: number): number => 1,
   addItem: (name: string): void => {},
@@ -15,6 +17,7 @@ export const ApiContext = createContext({
 const ApiContextProvider = ({ children }: { children: ReactNode }) => {
   const dd: { name: string; quantity: number }[] = [];
   const [cartData, setCartData] = useState(dd);
+  const [paymentStatus, setPaymentStatus] = useState("");
   const addItem = (name: string) => {
     const ItemToAdd = data.find((Item) => Item.name === name);
     if (ItemToAdd) {
@@ -74,6 +77,8 @@ const ApiContextProvider = ({ children }: { children: ReactNode }) => {
   return (
     <ApiContext.Provider
       value={{
+        paymentStatus,
+        setPaymentStatus,
         myCart: cartData,
         addItem,
         getPrice,

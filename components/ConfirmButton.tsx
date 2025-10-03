@@ -2,22 +2,34 @@
 import data from "@/data";
 import { ApiContext } from "@/hooks/apiContext";
 import Image from "next/image";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Check } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const ConfirmButton = () => {
-  const { myCart, getPrice, removeItem } = useContext(ApiContext);
+  const { myCart, getPrice, removeItem, paymentStatus } =
+    useContext(ApiContext);
   const [showModal, setShaowModal] = useState(false);
+  const router = useRouter();
   const handleStartNewOrder = () => {
     // MAKE PAYMENT PROCESS
     console.log(myCart);
     removeItem();
     setShaowModal(!showModal);
   };
+
   let totalPrice = 0;
   myCart.forEach((Item) => {
     totalPrice = totalPrice + getPrice(Item.name, Item.quantity);
   });
+  const confirmOrderHandler = () => {
+    router.push("/checkout");
+    // if (paymentStatus == "PENDING")
+    // if (paymentStatus != "PENDING") setShaowModal(!showModal);
+  };
+  // useEffect(() => {
+  //   if (paymentStatus != "PENDING") setShaowModal(!showModal);
+  // }, []);
   return (
     <div>
       {showModal && (
@@ -87,7 +99,7 @@ const ConfirmButton = () => {
 
       <button
         className="bg-myred px-8 p-3  my-2 rounded-full text-white font-semibold flex items-center justify-center cursor-pointer"
-        onClick={() => setShaowModal(!showModal)}
+        onClick={() => confirmOrderHandler()}
       >
         Confirm order
       </button>
